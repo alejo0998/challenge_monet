@@ -21,10 +21,13 @@ class Test(models.Model):
     date_finish = models.DateTimeField(null=True)
 
 class Question(models.Model):
-    test = models.ForeignKey(Test, null=False, on_delete=models.CASCADE)
     text_question = models.CharField(max_length=500)
 
-class Answer(models.Model):
+class QuestionTest(models.Model):
+    test = models.ForeignKey(Test, null=False, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, null=False, on_delete=models.CASCADE)
+
+class Answer(models.Model):
+    question_test = models.OneToOneField(QuestionTest, null=False, on_delete=models.CASCADE)
     text_answer = models.CharField(max_length=500)
-    note = models.FloatField(validators=[MinValueValidator(0,0), MaxValueValidator(10,0)])
+    note = models.FloatField(validators=[MinValueValidator(0,0), MaxValueValidator(10,0)], null=True)
