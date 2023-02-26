@@ -17,9 +17,13 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework_simplejwt import views as jwt_views
 
+from challenge_monet.views import UserView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name = 'token-obtain-pair'),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name = 'token-refresh'),
+    path('api/user/', UserView.as_view(), name='user-create-list'),
     path('api/student/', include('student.urls')),
+    path('api/exam/', include('exam.urls')),
 ]

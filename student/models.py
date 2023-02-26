@@ -5,7 +5,6 @@ class Student(models.Model):
     name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     date_of_birth = models.DateField()
-    email = models.EmailField()
     phone = models.IntegerField()
     class Gender(models.TextChoices):
         FEMALE = 'FEM', 'Female'

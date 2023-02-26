@@ -16,8 +16,9 @@ class Test(models.Model):
     subject = models.ForeignKey(Subject, null=False, on_delete=models.CASCADE)
     course = models.CharField(max_length=20)
     student = models.ForeignKey(Student, null=False, on_delete=models.CASCADE)
-    note = models.FloatField(validators=[MinValueValidator(0,0), MaxValueValidator(10,0)])
-    date = models.DateTimeField(null=True)
+    note = models.FloatField(validators=[MinValueValidator(0,0), MaxValueValidator(10,0)], null=True)
+    date_init = models.DateTimeField(null=True)
+    date_finish = models.DateTimeField(null=True)
 
 class Question(models.Model):
     test = models.ForeignKey(Test, null=False, on_delete=models.CASCADE)
