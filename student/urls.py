@@ -3,5 +3,5 @@ from django.urls import path
 from student.views import StudentView
 
 urlpatterns = [
-    path('', StudentView.as_view(), name='student-list-create')
+    path('', StudentView.as_view(), name='student-list-create') #Endpoint para listar o crear estudiantes.
 ]

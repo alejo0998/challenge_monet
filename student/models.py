@@ -12,3 +12,6 @@ class Student(models.Model):
         OTHER = 'OTHER', 'Other'
     gender = models.CharField(max_length=5, choices=Gender.choices)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.last_name + ', ' + self.name

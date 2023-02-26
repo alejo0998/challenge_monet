@@ -4,6 +4,8 @@ from exam.serializers import AnswerListSerializer, AnswerSerializer, QuestionSer
 from exam.models import Subject, Test, Question, Answer, QuestionTest
 from rest_framework.permissions import IsAuthenticated
 
+from student.models import Student
+
 class SubjectView(generics.ListCreateAPIView):
     serializer_class = SubjectSerializer
     queryset = Subject.objects.all()
@@ -51,6 +53,10 @@ class AnswerCreate(generics.CreateAPIView):
     serializer_class = AnswerSerializer
     queryset = Answer.objects.all()
     permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        student = Student.objects.get(user=self.request._user)
+        serializer.save(student=student)
 
     def post(self, request, *args, **kwargs):
         question_test = QuestionTest.objects.get(id=request.data.get('question_test'))

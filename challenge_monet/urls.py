@@ -21,9 +21,9 @@ from challenge_monet.views import UserView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name = 'token-obtain-pair'),
-    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name = 'token-refresh'),
-    path('api/user/', UserView.as_view(), name='user-create-list'),
+    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name = 'token-obtain-pair'), #Endpoint para obtener un jwt
+    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name = 'token-refresh'), #Endpoint para refrescar un jwt
+    path('api/user/', UserView.as_view(), name='user-create-list'), #Endpoint para crear un usuario
     path('api/student/', include('student.urls')),
     path('api/exam/', include('exam.urls')),
 ]

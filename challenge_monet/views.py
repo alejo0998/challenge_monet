@@ -6,3 +6,4 @@ from django.contrib.auth.models import User
 class UserView(generics.ListCreateAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
+    permission_classes = []
